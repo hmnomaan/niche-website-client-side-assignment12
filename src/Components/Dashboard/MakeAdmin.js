@@ -26,7 +26,8 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                        alert('User Added as Admin');
+                    alert('User Added as Admin');
+                    setSuccess(true);
                         e.target.reset();
                     }
                     else if (data.modifiedCount === 0 && data.matchedCount > 0) {
@@ -34,7 +35,8 @@ const MakeAdmin = () => {
                         e.target.reset();
                     }
                 else {
-                   setError(true)
+                   alert('User is not Valid!');
+                    e.target.reset();
                 }
             })
 
@@ -54,7 +56,7 @@ const MakeAdmin = () => {
                 <Button type="submit" variant="contained">Make Admin</Button>
             </form>
             {success && <Alert severity="success">Made Admin successfully!</Alert>}
-          {error &&  <Alert severity="error">user is not valid!</Alert>}
+          
             
         </div>
     );
