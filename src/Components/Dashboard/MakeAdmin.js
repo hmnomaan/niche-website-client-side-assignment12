@@ -25,11 +25,14 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.modifiedCount) {
-                    console.log(data);
-                    setSuccess(true);
-                    
-                }
+                if (data.modifiedCount > 0) {
+                        alert('User Added as Admin');
+                        e.target.reset();
+                    }
+                    else if (data.modifiedCount === 0 && data.matchedCount > 0) {
+                        alert('User Already Added as Admin');
+                        e.target.reset();
+                    }
                 else {
                    setError(true)
                 }
